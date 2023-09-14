@@ -5,8 +5,9 @@ import DbConnect from "./config/connectDatabase";
 import UserRouter from "./routes/user";
 
 DbConnect();
+app.use(express.json());
 
-app.use("/api/v1/users", UserRouter);
+app.use("/api/v1", UserRouter);
 
 app.get("*", (req: Request, res: Response) => {
   res.send("404 route!");
