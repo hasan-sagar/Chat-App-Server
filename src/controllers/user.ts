@@ -9,7 +9,7 @@ const UserRegistration = async (req: Request, res: Response) => {
     const { name, email, password, image } = bodyData;
 
     if (!name || !email || !password) {
-      res.status(400).send("Fill the form correctly");
+      throw new Error("Fill the form correctly");
     }
 
     const findExistUser = await User.findOne({
@@ -17,7 +17,7 @@ const UserRegistration = async (req: Request, res: Response) => {
     });
 
     if (findExistUser) {
-      res.status(400).send("User Exist! Login Now");
+      throw new Error("User Exist! Login Now");
     }
 
     const saveNewUser: UserType = await User.create({
@@ -38,7 +38,7 @@ const UserRegistration = async (req: Request, res: Response) => {
       });
     }
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error?.toString());
   }
 };
 
