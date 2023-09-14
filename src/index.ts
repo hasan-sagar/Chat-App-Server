@@ -3,16 +3,9 @@ import mongoose from "mongoose";
 const app = express();
 const chatData = require("./demo-data/data");
 require("dotenv").config();
+const DbConnect = require("./config/connectDatabase");
 
-//db connection
-mongoose
-  .connect(process.env.MONGODB_URI as string)
-  .then(() => {
-    console.log("DB Connected");
-  })
-  .catch((error: any) => {
-    throw new Error(error.toString());
-  });
+DbConnect();
 
 app.get("/", (req: Request, res: Response) => {
   res.send("click korso");
