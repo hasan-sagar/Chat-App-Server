@@ -11,4 +11,5 @@ const DbConnect = () => {
       throw new Error(error.toString());
     });
 };
-module.exports = DbConnect;
+
+export default DbConnect;

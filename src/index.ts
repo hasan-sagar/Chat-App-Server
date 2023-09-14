@@ -1,23 +1,15 @@
 import express, { Response, Request } from "express";
-import mongoose from "mongoose";
 const app = express();
-const chatData = require("./demo-data/data");
 require("dotenv").config();
-const DbConnect = require("./config/connectDatabase");
+import DbConnect from "./config/connectDatabase";
+import UserRouter from "./routes/user";
 
 DbConnect();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("click korso");
-});
+app.use("/api/v1/users", UserRouter);
 
-app.get("/api/chat", (req: Request, res: Response) => {
-  res.send(chatData);
-});
-
-app.get("/api/chat/:id", (req: Request, res: Response) => {
-  const singleChat = chatData.find((chat: any) => chat._id === req.params.id);
-  res.send(singleChat);
+app.get("*", (req: Request, res: Response) => {
+  res.send("404 route!");
 });
 
 app.listen(5000, () => {
