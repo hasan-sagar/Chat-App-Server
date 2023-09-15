@@ -11,7 +11,7 @@ app.use(cors());
 DbConnect();
 app.use(express.json());
 
-app.use("/api/v1", UserRouter);
+app.use("/api/v1/users", UserRouter);
 
 app.use(notFound);
 app.use(errorHandler);
