@@ -4,6 +4,10 @@ require("dotenv").config();
 import DbConnect from "./config/connectDatabase";
 import UserRouter from "./routes/user";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware";
+import cors from "cors";
+
+app.use(cors());
+
 DbConnect();
 app.use(express.json());
 
