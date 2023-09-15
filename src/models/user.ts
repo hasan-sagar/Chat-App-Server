@@ -27,8 +27,8 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
-UserSchema.methods.matchPassword = async function (inputPassword: string) {
-  return await bcrypt.compare(inputPassword, this.password);
+UserSchema.methods.matchPassword = async function (enteredPassword: string) {
+  return await bcrypt.compare(enteredPassword, this.password);
 };
 
 UserSchema.pre("save", async function (next) {
@@ -40,7 +40,6 @@ UserSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-type user = InferSchemaType<typeof UserSchema>;
 const User = mongoose.model("User", UserSchema);
 
 export default User;

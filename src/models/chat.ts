@@ -22,7 +22,5 @@ const chatSchema = new Schema(
   { timestamps: true }
 );
 
-type chat = InferSchemaType<typeof chatSchema>;
-
 const Chat = mongoose.model("Chat", chatSchema);
 module.exports = Chat;

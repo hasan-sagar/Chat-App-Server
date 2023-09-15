@@ -18,7 +18,5 @@ const messageSchema = new Schema(
   { timestamps: true }
 );
 
-type message = InferSchemaType<typeof messageSchema>;
-
 const Message = mongoose.model("Message", messageSchema);
 module.exports = Message;
