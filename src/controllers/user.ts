@@ -71,3 +71,30 @@ export const LoginUser = async (req: Request, res: Response) => {
     res.status(400).send(error?.toString());
   }
 };
+
+interface AuthenticatedRequest extends Request {
+  user?: any;
+}
+
+export const AllUsersList = async (
+  req: AuthenticatedRequest,
+  res: Response
+) => {
+  const searchQuery = req.query.search
+    ? {
+        $or: [
+          {
+            name: { $regex: req.query.search, $options: "i" },
+          },
+          {
+            name: { $regex: req.query.search, $options: "i" },
+          },
+        ],
+      }
+    : {};
+
+  const searchUser = await User.find(searchQuery).find({
+    _id: { $ne: req.user._id },
+  });
+  res.json(searchUser);
+};
