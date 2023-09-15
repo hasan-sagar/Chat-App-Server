@@ -3,7 +3,7 @@ import User from "../models/user";
 import jwt from "jsonwebtoken";
 import { UserType } from "../types/user";
 
-const UserRegistration = async (req: Request, res: Response) => {
+export const UserRegistration = async (req: Request, res: Response) => {
   try {
     const bodyData = req.body;
     const { name, email, password, image } = bodyData;
@@ -41,5 +41,3 @@ const UserRegistration = async (req: Request, res: Response) => {
     res.status(400).send(error?.toString());
   }
 };
-
-export default UserRegistration;
