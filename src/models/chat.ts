@@ -1,4 +1,4 @@
-import mongoose, { Schema, InferSchemaType } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const chatSchema = new Schema(
   {
@@ -22,5 +22,5 @@ const chatSchema = new Schema(
   { timestamps: true }
 );
 
-const Chat = mongoose.model("Chat", chatSchema);
-module.exports = Chat;
+export const Chat = mongoose.model("Chat", chatSchema);
+export default Chat;
