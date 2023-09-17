@@ -6,6 +6,7 @@ import UserRouter from "./routes/user";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware";
 import cors from "cors";
 import ChatRouter from "./routes/chat";
+import MessageRouter from "./routes/message";
 
 app.use(cors());
 
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use("/api/v1/users", UserRouter);
 //chat routes
 app.use("/api/v1/chat", ChatRouter);
-
+//message routes
+app.use("/api/v1/message", MessageRouter);
 app.use(notFound);
 app.use(errorHandler);
 
