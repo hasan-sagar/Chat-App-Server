@@ -80,21 +80,25 @@ export const AllUsersList = async (
   req: AuthenticatedRequest,
   res: Response
 ) => {
-  const searchQuery = req.query.search
-    ? {
-        $or: [
-          {
-            name: { $regex: req.query.search, $options: "i" },
-          },
-          {
-            name: { $regex: req.query.search, $options: "i" },
-          },
-        ],
-      }
-    : {};
+  try {
+    const searchQuery = req.query.search
+      ? {
+          $or: [
+            {
+              name: { $regex: req.query.search, $options: "i" },
+            },
+            {
+              email: { $regex: req.query.search, $options: "i" },
+            },
+          ],
+        }
+      : {};
 
-  const searchUser = await User.find(searchQuery).find({
-    _id: { $ne: req.user._id },
-  });
-  res.json(searchUser);
+    const searchUser = await User.find(searchQuery).find({
+      _id: { $ne: req.user._id },
+    });
+    res.status(200).json(searchUser);
+  } catch (error) {
+    throw new Error("Server Problem");
+  }
 };
