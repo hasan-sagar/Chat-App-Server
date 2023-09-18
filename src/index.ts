@@ -25,6 +25,6 @@ app.get("/", (req: Request, res: Response) => {
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(5000, () => {
-  console.log("hi 5000");
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`hi ${process.env.PORT}`);
 });
