@@ -21,7 +21,7 @@ app.use("/api/v1/users", user_1.default);
 app.use("/api/v1/chat", chat_1.default);
 //message routes
 app.use("/api/v1/message", message_1.default);
-app.get("/api/v1", (req, res) => [res.send("Hello Users")]);
+app.get("/", (req, res) => [res.send("Hello Users")]);
 app.use(errorMiddleware_1.notFound);
 app.use(errorMiddleware_1.errorHandler);
 app.listen(5000, () => {
