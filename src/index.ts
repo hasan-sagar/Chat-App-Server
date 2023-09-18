@@ -19,7 +19,9 @@ app.use("/api/v1/users", UserRouter);
 app.use("/api/v1/chat", ChatRouter);
 //message routes
 app.use("/api/v1/message", MessageRouter);
-app.get("/", (req: Request, res: Response) => [res.send("Hello Users")]);
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello Users");
+});
 app.use(notFound);
 app.use(errorHandler);
 
