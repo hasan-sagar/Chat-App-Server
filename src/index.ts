@@ -34,10 +34,10 @@ const io = new Server(serverConnection, {
   pingTimeout: 60000,
   cors: {
     origin: [
-      "http://localhost:5000",
-      "http://localhost:5173",
+      // "http://localhost:5000",
+      // "http://localhost:5173",
       "https://chat-server-yf54.onrender.com",
-      "https://chat-app-o.vercel.app/",
+      "https://chat-app-nine-theta.vercel.app",
     ],
   },
 });
