@@ -33,7 +33,12 @@ const serverConnection = app.listen(process.env.PORT || 5000, () => {
 const io = new Server(serverConnection, {
   pingTimeout: 60000,
   cors: {
-    origin: ["http://localhost:5000", "http://localhost:5173"],
+    origin: [
+      "http://localhost:5000",
+      "http://localhost:5173",
+      "https://chat-server-yf54.onrender.com",
+      "https://chat-app-o.vercel.app/",
+    ],
   },
 });
 
